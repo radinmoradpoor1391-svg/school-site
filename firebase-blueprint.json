@@ -1,0 +1,189 @@
+{
+  "entities": {
+    "User": {
+      "collection": "users",
+      "fields": {
+        "id": { "type": "string", "description": "Unique user / auth ID" },
+        "nationalId": { "type": "string", "description": "National ID" },
+        "firstName": { "type": "string", "description": "First name" },
+        "lastName": { "type": "string", "description": "Last name" },
+        "role": { "type": "string", "description": "User role: student | teacher | admin" },
+        "email": { "type": "string", "description": "Email address" },
+        "phone": { "type": "string", "description": "Phone number" },
+        "avatarUrl": { "type": "string", "description": "Avatar URL or storage path" },
+        "isActive": { "type": "boolean", "description": "Account status" },
+        "firstLogin": { "type": "boolean", "description": "First time login flag" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" }
+      }
+    },
+    "Student": {
+      "collection": "students",
+      "fields": {
+        "id": { "type": "string", "description": "Student ID" },
+        "userId": { "type": "string", "description": "Associated user ID" },
+        "nationalId": { "type": "string", "description": "National ID" },
+        "firstName": { "type": "string", "description": "First name" },
+        "lastName": { "type": "string", "description": "Last name" },
+        "fatherName": { "type": "string", "description": "Father name" },
+        "classId": { "type": "string", "description": "Assigned class ID" },
+        "className": { "type": "string", "description": "Class display name" },
+        "gradeLevel": { "type": "string", "description": "Grade level" },
+        "studentCode": { "type": "string", "description": "Student registration code" },
+        "parentPhone": { "type": "string", "description": "Parent phone" },
+        "avatarUrl": { "type": "string", "description": "Profile picture URL" },
+        "isActive": { "type": "boolean", "description": "Status" },
+        "disciplineScore": { "type": "number", "description": "Discipline score out of 20" }
+      }
+    },
+    "Teacher": {
+      "collection": "teachers",
+      "fields": {
+        "id": { "type": "string", "description": "Teacher ID" },
+        "userId": { "type": "string", "description": "Associated user ID" },
+        "nationalId": { "type": "string", "description": "National ID" },
+        "firstName": { "type": "string", "description": "First name" },
+        "lastName": { "type": "string", "description": "Last name" },
+        "specialty": { "type": "string", "description": "Subject specialty" },
+        "assignedClassIds": { "type": "array", "description": "Assigned class IDs" },
+        "assignedSubjectIds": { "type": "array", "description": "Assigned subject IDs" },
+        "phone": { "type": "string", "description": "Phone number" },
+        "isActive": { "type": "boolean", "description": "Status" }
+      }
+    },
+    "SchoolClass": {
+      "collection": "classes",
+      "fields": {
+        "id": { "type": "string", "description": "Class ID" },
+        "name": { "type": "string", "description": "Class name" },
+        "gradeLevel": { "type": "string", "description": "Grade level" },
+        "academicYearId": { "type": "string", "description": "Academic year ID" },
+        "studentIds": { "type": "array", "description": "Enrolled student IDs" },
+        "capacity": { "type": "number", "description": "Class capacity" },
+        "roomNumber": { "type": "string", "description": "Room number" }
+      }
+    },
+    "Subject": {
+      "collection": "subjects",
+      "fields": {
+        "id": { "type": "string", "description": "Subject ID" },
+        "title": { "type": "string", "description": "Subject title" },
+        "code": { "type": "string", "description": "Course code" },
+        "coefficient": { "type": "number", "description": "Weight / coefficient" },
+        "gradeLevel": { "type": "string", "description": "Grade level / school tier" }
+      }
+    },
+    "Grade": {
+      "collection": "grades",
+      "fields": {
+        "id": { "type": "string", "description": "Grade ID" },
+        "studentId": { "type": "string", "description": "Student ID" },
+        "teacherId": { "type": "string", "description": "Teacher ID" },
+        "subjectId": { "type": "string", "description": "Subject ID" },
+        "classId": { "type": "string", "description": "Class ID" },
+        "score": { "type": "number", "description": "Score out of 20" },
+        "gradeType": { "type": "string", "description": "Grade category" },
+        "date": { "type": "string", "description": "Jalali date" },
+        "month": { "type": "string", "description": "Month name" },
+        "semester": { "type": "string", "description": "Semester 1 or 2" },
+        "academicYearId": { "type": "string", "description": "Academic year ID" }
+      }
+    },
+    "AttendanceRecord": {
+      "collection": "attendance",
+      "fields": {
+        "id": { "type": "string", "description": "Attendance ID" },
+        "date": { "type": "string", "description": "Date" },
+        "classId": { "type": "string", "description": "Class ID" },
+        "studentId": { "type": "string", "description": "Student ID" },
+        "status": { "type": "string", "description": "present | absent | excused | late" },
+        "recordedByTeacherId": { "type": "string", "description": "Recording teacher ID" }
+      }
+    },
+    "Homework": {
+      "collection": "homeworks",
+      "fields": {
+        "id": { "type": "string", "description": "Homework ID" },
+        "title": { "type": "string", "description": "Title" },
+        "description": { "type": "string", "description": "Instructions" },
+        "subjectId": { "type": "string", "description": "Subject ID" },
+        "classId": { "type": "string", "description": "Class ID" },
+        "teacherId": { "type": "string", "description": "Teacher ID" },
+        "dueDate": { "type": "string", "description": "Due date" }
+      }
+    },
+    "HomeworkSubmission": {
+      "collection": "submissions",
+      "fields": {
+        "id": { "type": "string", "description": "Submission ID" },
+        "homeworkId": { "type": "string", "description": "Homework ID" },
+        "studentId": { "type": "string", "description": "Student ID" },
+        "studentName": { "type": "string", "description": "Student name" },
+        "submittedAt": { "type": "string", "description": "Submission timestamp" },
+        "fileUrl": { "type": "string", "description": "Uploaded image / file URL" },
+        "grade": { "type": "number", "description": "Grade score" },
+        "status": { "type": "string", "description": "submitted | graded" }
+      }
+    },
+    "Announcement": {
+      "collection": "announcements",
+      "fields": {
+        "id": { "type": "string", "description": "Announcement ID" },
+        "title": { "type": "string", "description": "Title" },
+        "content": { "type": "string", "description": "Content" },
+        "target": { "type": "string", "description": "all | students | teachers | admin" },
+        "priority": { "type": "string", "description": "Priority level" },
+        "createdAt": { "type": "string", "description": "Creation date" }
+      }
+    },
+    "ReportCard": {
+      "collection": "reportCards",
+      "fields": {
+        "id": { "type": "string", "description": "Report card ID" },
+        "studentId": { "type": "string", "description": "Student ID" },
+        "classId": { "type": "string", "description": "Class ID" },
+        "academicYearId": { "type": "string", "description": "Academic year ID" },
+        "type": { "type": "string", "description": "monthly | semester1 | semester2 | yearly" },
+        "monthName": { "type": "string", "description": "Month name" },
+        "gpa": { "type": "number", "description": "GPA" },
+        "rankInClass": { "type": "number", "description": "Rank in class" },
+        "generatedAt": { "type": "string", "description": "Generation timestamp" }
+      }
+    },
+    "TeacherNote": {
+      "collection": "teacherNotes",
+      "fields": {
+        "id": { "type": "string", "description": "Note ID" },
+        "studentId": { "type": "string", "description": "Student ID" },
+        "teacherId": { "type": "string", "description": "Teacher ID" },
+        "category": { "type": "string", "description": "behavior | academic | strength | improvement" },
+        "content": { "type": "string", "description": "Note content" }
+      }
+    },
+    "AuditLog": {
+      "collection": "auditLogs",
+      "fields": {
+        "id": { "type": "string", "description": "Log ID" },
+        "userId": { "type": "string", "description": "Actor user ID" },
+        "action": { "type": "string", "description": "Action performed" },
+        "timestamp": { "type": "string", "description": "Timestamp" }
+      }
+    },
+    "AcademicYear": {
+      "collection": "academicYears",
+      "fields": {
+        "id": { "type": "string", "description": "Year ID" },
+        "name": { "type": "string", "description": "Year display name" },
+        "isCurrent": { "type": "boolean", "description": "Current active year" }
+      }
+    },
+    "SchoolConfig": {
+      "collection": "schoolConfig",
+      "fields": {
+        "id": { "type": "string", "description": "Config document ID" },
+        "schoolName": { "type": "string", "description": "School name" },
+        "managerName": { "type": "string", "description": "Principal name" },
+        "academicYear": { "type": "string", "description": "Active academic year name" }
+      }
+    }
+  }
+}
